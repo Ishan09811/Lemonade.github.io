@@ -38,6 +38,16 @@ jobs:
           hugo-version: '0.122.0'
           extended: true
 
+      - name: Remove old theme submodule
+        run: |
+          git submodule deinit -f themes/hugo-blog-awesome
+          git rm -f themes/hugo-blog-awesome
+          rm -rf .git/modules/themes/hugo-blog-awesome
+
+      - name: Add new theme as submodule
+        run: |
+          git submodule add https://github.com/Ishan09811/hugo-blog-awesome themes/hugo-blog-awesome
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
