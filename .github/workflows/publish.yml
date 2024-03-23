@@ -8,32 +8,43 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Install Octokit
+        run: npm install @octokit/core
+
       - name: Retrieve Release Information
         id: release_info
-        uses: actions/github-script@v5
-        with:
-          script: |
-            const releaseInfo = await github.repos.getLatestRelease({ owner: 'Gamer64ytb', repo: 'Lemonade' });
-            const version = releaseInfo.data.tag_name;
-            const releaseNotes = releaseInfo.data.body;
-            const assets = releaseInfo.data.assets.map(asset => asset.browser_download_url);
-            // Use the retrieved information to generate post content
+        run: |
+          const { Octokit } = require("@octokit/core");
 
-            // Output the release information
-            console.log(`Release Version: ${version}`);
-            console.log(`Release Notes: ${releaseNotes}`);
-            console.log(`Download Links: ${assets}`);
+          const octokit = new Octokit();
 
-            // Pass release information to the next step
-            return { version: version, releaseNotes: releaseNotes, assets: assets };
+          const { data: releaseInfo } = await octokit.request("GET /repos/{owner}/{repo}/releases/latest", {
+            owner: "Gamer64ytb",
+            repo: "Lemonade"
+          });
+
+          const version = releaseInfo.tag_name;
+          const releaseNotes = releaseInfo.body;
+          const assets = releaseInfo.assets.map(asset => asset.browser_download_url);
+
+          console.log(`Release Version: ${version}`);
+          console.log(`Release Notes: ${releaseNotes}`);
+          console.log(`Download Links: ${assets}`);
+
+          // Pass release information to the next step
+          console.log(JSON.stringify({ version: version, releaseNotes: releaseNotes, assets: assets }));
+          core.setOutput('release_info', JSON.stringify({ version: version, releaseNotes: releaseNotes, assets: assets }));
 
       - name: Generate Post Content
         id: generate_post
         run: |
           # Use release information from the previous step to generate post content
-          version="${{ steps.release_info.outputs.version }}"
-          releaseNotes="${{ steps.release_info.outputs.releaseNotes }}"
-          assets="${{ steps.release_info.outputs.assets }}"
+          version=$(echo ${{ steps.release_info.outputs.release_info }} | jq -r .version)
+          releaseNotes=$(echo ${{ steps.release_info.outputs.release_info }} | jq -r .releaseNotes)
+          assets=$(echo ${{ steps.release_info.outputs.release_info }} | jq -r .assets)
           
           # Example: Generate post content with release information
           echo "---
@@ -41,7 +52,7 @@ jobs:
           date: $(date +%FT%T%z)
           ---
           # Release Notes
-          ${releaseNotes}"
+          ${releaseNotes}
 
           # Download Links
           ${assets.map(asset => `- [${asset}](${asset})`).join('\n')}" > ${version}.md
