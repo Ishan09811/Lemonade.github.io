@@ -1,5 +1,5 @@
 title = "Lemonade - Nintendo 3ds Emulator "
-baseURL = 'https://ishan09811.github.io/'
+baseURL = 'https://lemonade-emu.github.io/'
 
 # This is what goes in <html lang="">
 languageCode = 'en-us'
