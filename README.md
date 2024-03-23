@@ -6,12 +6,12 @@
         <img src="https://dcbadge.vercel.app/api/server/NVTYcV4v2Q">
     </a>
     <a href="https://github.com/strato-emu/strato-emu.github.io/actions/workflows/hugo.yml" target="_blank">
-        <img src="https://github.com/strato-emu/strato-emu.github.io/actions/workflows/hugo.yml/badge.svg"><br>
+        <img src="https://github.com/Lemonade-emu/Lemonade.github.io/actions/workflows/hugo.yml/badge.svg"><br>
     </a>
 </h1>
 
 <p align="center">
-    <b><a href="CONTRIBUTING.md">Contributing Guide</a> • <a href="BUILDING.md">Building Guide</a></b>
+    <b><a href="CONTRIBUTING.md">Contributing Guide</a></b>
 </p>
 
 <p align="center">
