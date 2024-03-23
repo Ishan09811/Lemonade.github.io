@@ -21,7 +21,7 @@ const https = require('https');
         const releaseInfo = JSON.parse(data);
         const version = releaseInfo.tag_name;
         const releaseNotes = releaseInfo.body;
-        const assets = releaseInfo.assets.map(asset => asset.browser_download_url);
+        const assets = releaseInfo.assets ? releaseInfo.assets.map(asset => asset.browser_download_url) : [];
 
         console.log(`Release Version: ${version}`);
         console.log(`Release Notes: ${releaseNotes}`);
