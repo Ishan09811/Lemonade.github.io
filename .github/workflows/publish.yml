@@ -16,9 +16,6 @@ jobs:
         with:
           node-version: '14'
 
-      - name: Install Octokit
-        run: npm install @octokit/core
-
       - name: Retrieve Release Information
         id: release_info
         run: node get_release_info.js
