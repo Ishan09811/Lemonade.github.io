@@ -23,21 +23,8 @@ const https = require('https');
         const releaseNotes = releaseInfo.body;
         const githubLink = releaseInfo.html_url;
 
-        // Generate post content
-        let postContent = `---
-title: Release ${version}
-date: ${new Date().toISOString()}
----
-
-# Release Notes
-${releaseNotes}
-
-# Download Link
-- [Download Latest Release](${githubLink})
-`;
-
-        // Output post content
-        console.log(postContent);
+        // Pass release information to the next step
+        console.log(JSON.stringify({ version: version, releaseNotes: releaseNotes, githubLink: githubLink }));
       });
     });
 
