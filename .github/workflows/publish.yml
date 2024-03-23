@@ -29,11 +29,7 @@ jobs:
           # Use release information from the previous step to generate post content
           version=$(echo "${{ steps.release_info.outputs.release_info }}" | jq -r .version)
           releaseNotes=$(echo "${{ steps.release_info.outputs.release_info }}" | jq -r .releaseNotes)
-          assets=$(echo "${{ steps.release_info.outputs.release_info }}" | jq -r .assets)
-          download_links=""
-          for asset in $assets; do
-            download_links="$download_links- [$asset]($asset)\n"
-          done
+          githubLink=$(echo "${{ steps.release_info.outputs.release_info }}" | jq -r .githubLink)
           
           # Generate post content with release information
           echo "---
@@ -43,8 +39,9 @@ jobs:
           # Release Notes
           ${releaseNotes}
 
-          # Download Links
-          ${download_links}" > "${version}.md"
+          # Download Link
+          - [Download Latest Release](${githubLink})
+          " > "${version}.md"
           
       - name: Move Markdown File to Contents Folder
         run: |
@@ -55,3 +52,4 @@ jobs:
         with:
           commit_message: "Add new post for release ${{ steps.release_info.outputs.version }}"
           branch: master
+          
