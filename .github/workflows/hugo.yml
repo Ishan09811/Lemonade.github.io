@@ -38,19 +38,6 @@ jobs:
           hugo-version: '0.122.0'
           extended: true
 
-      - name: Remove old theme submodule
-        run: |
-          cd /home/runner/work/Lemonade.github.io/
-          git submodule deinit -f themes/hugo-blog-awesome
-          git rm -f themes/hugo-blog-awesome
-          cd ../..
-
-      - name: Add new theme as submodule
-        run: |
-          cd /home/runner/work/Lemonade.github.io/
-          git submodule add https://github.com/Ishan09811/hugo-blog-awesome themes/hugo-blog-awesome
-          cd ../..
-
       - name: Checkout
         uses: actions/checkout@v4
         with:
