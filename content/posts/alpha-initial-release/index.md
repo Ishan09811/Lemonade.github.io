@@ -25,13 +25,13 @@ description = "General improvements and new Features"
 ## Internal/ Minor Changes
 
 • Refactor gamesettings (moved to core.cpp). Apply tweaks for PC version too (If we release it)
-- Fix a bunch of compiling errors (thanks to @kleidiss)
+- Fix a bunch of compiling errors (thanks to [kleidiss](https://github.com/kleidiss))
 • Re-work on externals folder to be fine on my project (thanks @kleidiss )
-• Rebranded to the new project (thanks @kleidiss  for the icons)
+• Rebranded to the new project (thanks [kleidiss](https://github.com/kleidiss)  for the icons)
 
 ## Notice
 
-We are still looking for developers especially for a PC port so please contact us on Discord if you're interested
+We are still looking for developers especially for a PC port so please contact us on [Discord](https://discord.gg/NVTYcV4v2Q) if you're interested
 
 ## WARNING ⚠️
 
