@@ -32,5 +32,5 @@ This is a ALPHA/PRE-RELEASE
 
 The stable version  will be relelased later on with proper rebranding and more performance improvements/fixes
 
-## Download 
-[Download](https://github.com/Gamer64ytb/Lemonade/releases/tag/Alpha)
+## Download Links
+[app-canary-release.apk](https://github.com/Gamer64ytb/Lemonade/releases/download/Alpha/app-canary-release.apk)
