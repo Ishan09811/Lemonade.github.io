@@ -1,0 +1,58 @@
+name: Create Post on Release
+
+on:
+  repository_dispatch:
+    types: [create-post]
+
+jobs:
+  create_post:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Retrieve Release Information
+        id: release_info
+        uses: actions/github-script@v5
+        with:
+          script: |
+            const releaseInfo = await github.repos.getLatestRelease({ owner: 'Gamer64ytb', repo: 'Lemonade' });
+            const version = releaseInfo.data.tag_name;
+            const releaseNotes = releaseInfo.data.body;
+            const assets = releaseInfo.data.assets.map(asset => asset.browser_download_url);
+            // Use the retrieved information to generate post content
+
+            // Output the release information
+            console.log(`Release Version: ${version}`);
+            console.log(`Release Notes: ${releaseNotes}`);
+            console.log(`Download Links: ${assets}`);
+
+            // Pass release information to the next step
+            return { version: version, releaseNotes: releaseNotes, assets: assets };
+
+      - name: Generate Post Content
+        id: generate_post
+        run: |
+          # Use release information from the previous step to generate post content
+          version="${{ steps.release_info.outputs.version }}"
+          releaseNotes="${{ steps.release_info.outputs.releaseNotes }}"
+          assets="${{ steps.release_info.outputs.assets }}"
+          
+          # Example: Generate post content with release information
+          echo "---
+          title: Release ${version}
+          date: $(date +%FT%T%z)
+          ---
+          # Release Notes
+          ${releaseNotes}"
+
+          # Download Links
+          ${assets.map(asset => `- [${asset}](${asset})`).join('\n')}" > ${version}.md
+
+      - name: Move Markdown File to Contents Folder
+        run: |
+          mv ${version}.md content/posts/
+
+      - name: Commit and Push Changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "Add new post for release ${{ steps.release_info.outputs.version }}"
+          branch: master
