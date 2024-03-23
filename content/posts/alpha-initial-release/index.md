@@ -4,8 +4,7 @@ title = 'Initial Lemonade Release'
 date = 2024-03-20
 description = "General improvements and new Features"
 +++
-    
-# Initial Lemonade Release
+
 ## General Improvements/New Features 
 
 • Implement touch controls opacity option
