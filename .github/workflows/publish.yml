@@ -1,9 +1,8 @@
 name: Create Post on Release
 
 on:
-  repository_dispatch:
-    types: [create-post]
-
+  workflow_dispatch:
+  
 jobs:
   create_post:
     runs-on: ubuntu-latest
