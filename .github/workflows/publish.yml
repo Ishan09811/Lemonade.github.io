@@ -24,11 +24,15 @@ jobs:
         id: generate_post
         run: |
           # Use release information from the previous step to generate post content
-          version=$(echo ${{ steps.release_info.outputs.release_info }} | jq -r .version)
-          releaseNotes=$(echo ${{ steps.release_info.outputs.release_info }} | jq -r .releaseNotes)
-          assets=$(echo ${{ steps.release_info.outputs.release_info }} | jq -r .assets)
+          version=$(echo "${{ steps.release_info.outputs.release_info }}" | jq -r .version)
+          releaseNotes=$(echo "${{ steps.release_info.outputs.release_info }}" | jq -r .releaseNotes)
+          assets=$(echo "${{ steps.release_info.outputs.release_info }}" | jq -r .assets)
+          download_links=""
+          for asset in $assets; do
+            download_links="$download_links- [$asset]($asset)\n"
+          done
           
-          # Example: Generate post content with release information
+          # Generate post content with release information
           echo "---
           title: Release ${version}
           date: $(date +%FT%T%z)
@@ -37,8 +41,8 @@ jobs:
           ${releaseNotes}
 
           # Download Links
-          ${assets.map(asset => `- [${asset}](${asset})`).join('\n')}" > ${version}.md
-
+          ${download_links}" > "${version}.md"
+          
       - name: Move Markdown File to Contents Folder
         run: |
           mv ${version}.md content/posts/
