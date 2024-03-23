@@ -39,11 +39,13 @@ jobs:
           extended: true
 
       - name: Remove old theme submodule
+        working-directory: Lemonade.github.io
         run: |
           git submodule deinit -f themes/hugo-blog-awesome
           git rm -f themes/hugo-blog-awesome
 
       - name: Add new theme as submodule
+        working-directory: Lemonade.github.io
         run: |
           git submodule add https://github.com/Ishan09811/hugo-blog-awesome themes/hugo-blog-awesome
 
