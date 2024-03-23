@@ -26,7 +26,7 @@ description = "General improvements and new Features"
 
 - Refactor gamesettings (moved to core.cpp). Apply tweaks for PC version too (If we release it)
 - Fix a bunch of compiling errors (thanks to [kleidiss](https://github.com/kleidiss))
-- Re-work on externals folder to be fine on my project (thanks @kleidiss )
+- Re-work on externals folder to be fine on my project (thanks [kleidiss](https://github.com/kleidiss) )
 - Rebranded to the new project (thanks [kleidiss](https://github.com/kleidiss)  for the icons)
 
 ## Notice
