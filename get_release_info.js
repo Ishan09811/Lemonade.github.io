@@ -21,14 +21,23 @@ const https = require('https');
         const releaseInfo = JSON.parse(data);
         const version = releaseInfo.tag_name;
         const releaseNotes = releaseInfo.body;
-        const assets = releaseInfo.assets ? releaseInfo.assets.map(asset => asset.browser_download_url) : [];
+        const githubLink = releaseInfo.html_url;
 
-        console.log(`Release Version: ${version}`);
-        console.log(`Release Notes: ${releaseNotes}`);
-        console.log(`Download Links: ${assets}`);
+        // Generate post content
+        let postContent = `---
+title: Release ${version}
+date: ${new Date().toISOString()}
+---
 
-        // Output release information
-        console.log(JSON.stringify({ version: version, releaseNotes: releaseNotes, assets: assets }));
+# Release Notes
+${releaseNotes}
+
+# Download Link
+- [Download Latest Release](${githubLink})
+`;
+
+        // Output post content
+        console.log(postContent);
       });
     });
 
