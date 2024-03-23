@@ -11,32 +11,17 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
       - name: Install Octokit
         run: npm install @octokit/core
 
       - name: Retrieve Release Information
         id: release_info
-        run: |
-          const { Octokit } = require("@octokit/core");
-
-          const octokit = new Octokit();
-
-          const { data: releaseInfo } = await octokit.request("GET /repos/{owner}/{repo}/releases/latest", {
-            owner: "Gamer64ytb",
-            repo: "Lemonade"
-          });
-
-          const version = releaseInfo.tag_name;
-          const releaseNotes = releaseInfo.body;
-          const assets = releaseInfo.assets.map(asset => asset.browser_download_url);
-
-          console.log(`Release Version: ${version}`);
-          console.log(`Release Notes: ${releaseNotes}`);
-          console.log(`Download Links: ${assets}`);
-
-          // Pass release information to the next step
-          console.log(JSON.stringify({ version: version, releaseNotes: releaseNotes, assets: assets }));
-          core.setOutput('release_info', JSON.stringify({ version: version, releaseNotes: releaseNotes, assets: assets }));
+        run: node get_release_info.js
 
       - name: Generate Post Content
         id: generate_post
