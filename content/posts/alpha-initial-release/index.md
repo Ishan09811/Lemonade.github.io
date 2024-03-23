@@ -7,14 +7,14 @@ description = "General improvements and new Features"
 
 ## General Improvements/New Features 
 
-• Implement touch controls opacity option
-• Implement rotate screen option
-• Fix random crashes when closing a game (issue from the base emulator)
-• Fix some memory leaks
-• Implement un-merged commits from base
-• Implement Core Downcount Hack (reduces CPU usage by ~15%)
-• Implement Y2R hack (fix FIFA games)
-• Some bugfixes for Mali GPUs
+- Implement touch controls opacity option
+- Implement rotate screen option
+- Fix random crashes when closing a game (issue from the base emulator)
+- Fix some memory leaks
+- Implement un-merged commits from base
+- Implement Core Downcount Hack (reduces CPU usage by ~15%)
+- Implement Y2R hack (fix FIFA games)
+- Some bugfixes for Mali GPUs
 
 ## Added new menu "Lemontweaks":
  - Implement FMV Hack
@@ -24,10 +24,10 @@ description = "General improvements and new Features"
 
 ## Internal/ Minor Changes
 
-• Refactor gamesettings (moved to core.cpp). Apply tweaks for PC version too (If we release it)
+- Refactor gamesettings (moved to core.cpp). Apply tweaks for PC version too (If we release it)
 - Fix a bunch of compiling errors (thanks to [kleidiss](https://github.com/kleidiss))
-• Re-work on externals folder to be fine on my project (thanks @kleidiss )
-• Rebranded to the new project (thanks [kleidiss](https://github.com/kleidiss)  for the icons)
+- Re-work on externals folder to be fine on my project (thanks @kleidiss )
+- Rebranded to the new project (thanks [kleidiss](https://github.com/kleidiss)  for the icons)
 
 ## Notice
 
