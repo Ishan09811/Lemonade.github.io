@@ -42,7 +42,6 @@ jobs:
         run: |
           git submodule deinit -f themes/hugo-blog-awesome
           git rm -f themes/hugo-blog-awesome
-          rm -rf .git/modules/themes/hugo-blog-awesome
 
       - name: Add new theme as submodule
         run: |
