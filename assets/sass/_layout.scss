@@ -99,14 +99,17 @@
 
  .btn_download {
   background-color: #007bff; /* Blue background */
-  height: 50px;
-  width: 150px; /* Fixed width */
+  height: 20px;
+  width: 200px; /* Fixed width */
   color: white; /* White text */
-  padding: 2px 2px; /* Padding around the text */
+  padding: 0; /* Padding around the text */
   border-radius: 5px; /* Rounded corners */
   text-decoration: none; /* No underline */
   transition: background-color 0.3s ease-in-out; /* Smooth background color transition */
   margin: 0 auto;
+  display: flex; /* Use flexbox for centering */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
 
   &:hover, &:focus {
     background-color: #0056b3; /* Darker blue on hover/focus */
