@@ -97,6 +97,11 @@
     margin-top: 3em;
   }
 
+  @font-face {
+  font-family: 'CustomFont'; /* Font Family Name */
+  src: url('/fonts/TechnoRaceItalic.otf.ttf') format('truetype'); /* Font path */
+  }
+
  .btn_download {
   background-color: #007bff; /* Blue background */
   height: 45px;
@@ -110,6 +115,8 @@
   display: flex; /* Use flexbox for centering */
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
+  font-family: 'CustomFont', Arial, sans-serif; /* Use custom font with fallbacks */
+  font-weight: bold;
 
   &:hover, &:focus {
     background-color: #0056b3; /* Darker blue on hover/focus */
