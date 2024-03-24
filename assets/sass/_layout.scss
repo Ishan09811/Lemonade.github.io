@@ -32,6 +32,20 @@
     max-width: 393px;
     line-height: 1.688;
   }
+  .btn-download {
+  background-color: #007bff; /* Blue background */
+  color: white; /* White text */
+  padding: 10px 20px; /* Padding around the text */
+  border-radius: 5px; /* Rounded corners */
+  text-decoration: none; /* No underline */
+  transition: background-color 0.3s ease-in-out; /* Smooth background color transition */
+
+  &:hover, &:focus {
+    background-color: #0056b3; /* Darker blue on hover/focus */
+    color: white;
+    text-decoration: none;
+   }
+ }
 }
 
 // Content
