@@ -115,7 +115,7 @@
   display: flex; /* Use flexbox for centering */
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
-  font-family: 'CustomFont', Arial, sans-serif; /* Use custom font with fallbacks */
+  font-family: 'CustomFont'; /* Use custom font with fallbacks */
   font-weight: bold;
 
   &:hover, &:focus {
