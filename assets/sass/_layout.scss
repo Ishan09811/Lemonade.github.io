@@ -99,12 +99,14 @@
 
  .btn_download {
   background-color: #007bff; /* Blue background */
-  width: 100px; /* Fixed width */
+  height: 50px;
+  width: 150px; /* Fixed width */
   color: white; /* White text */
   padding: 10px 20px; /* Padding around the text */
   border-radius: 5px; /* Rounded corners */
   text-decoration: none; /* No underline */
   transition: background-color 0.3s ease-in-out; /* Smooth background color transition */
+  margin: 0 auto;
 
   &:hover, &:focus {
     background-color: #0056b3; /* Darker blue on hover/focus */
